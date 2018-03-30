@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="TestMe">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../eclipse/java-oxygen/eclipse/"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="TestMe.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="../../Test/lib/aws-java-sdk-1.11.304.jar"/>
+        <pathelement location="../../Test/third-party/lib/aspectjrt-1.8.2.jar"/>
+        <pathelement location="../../Test/third-party/lib/aspectjweaver.jar"/>
+        <pathelement location="../../Test/third-party/lib/aws-swf-build-tools-1.1.jar"/>
+        <pathelement location="../../Test/third-party/lib/commons-codec-1.10.jar"/>
+        <pathelement location="../../Test/third-party/lib/commons-logging-1.1.2.jar"/>
+        <pathelement location="../../Test/third-party/lib/commons-logging-1.1.3.jar"/>
+        <pathelement location="../../Test/third-party/lib/commons-logging-1.2.jar"/>
+        <pathelement location="../../Test/third-party/lib/freemarker-2.3.9.jar"/>
+        <pathelement location="../../Test/third-party/lib/httpclient-4.5.5.jar"/>
+        <pathelement location="../../Test/third-party/lib/httpcore-4.4.9.jar"/>
+        <pathelement location="../../Test/third-party/lib/ion-java-1.0.2.jar"/>
+        <pathelement location="../../Test/third-party/lib/jackson-annotations-2.6.0.jar"/>
+        <pathelement location="../../Test/third-party/lib/jackson-core-2.6.7.jar"/>
+        <pathelement location="../../Test/third-party/lib/jackson-databind-2.6.7.1.jar"/>
+        <pathelement location="../../Test/third-party/lib/jackson-dataformat-cbor-2.6.7.jar"/>
+        <pathelement location="../../Test/third-party/lib/javax.mail-api-1.4.6.jar"/>
+        <pathelement location="../../Test/third-party/lib/jmespath-java-1.11.304.jar"/>
+        <pathelement location="../../Test/third-party/lib/joda-time-2.8.1.jar"/>
+        <pathelement location="../../Test/third-party/lib/netty-buffer-4.1.17.Final.jar"/>
+        <pathelement location="../../Test/third-party/lib/netty-codec-4.1.17.Final.jar"/>
+        <pathelement location="../../Test/third-party/lib/netty-codec-http-4.1.17.Final.jar"/>
+        <pathelement location="../../Test/third-party/lib/netty-common-4.1.17.Final.jar"/>
+        <pathelement location="../../Test/third-party/lib/netty-handler-4.1.17.Final.jar"/>
+        <pathelement location="../../Test/third-party/lib/netty-resolver-4.1.17.Final.jar"/>
+        <pathelement location="../../Test/third-party/lib/netty-transport-4.1.17.Final.jar"/>
+        <pathelement location="../../Test/third-party/lib/spring-beans-3.0.7.RELEASE.jar"/>
+        <pathelement location="../../Test/third-party/lib/spring-context-3.0.7.RELEASE.jar"/>
+        <pathelement location="../../Test/third-party/lib/spring-core-3.0.7.RELEASE.jar"/>
+        <pathelement location="../../Test/third-party/lib/spring-test-3.0.7.RELEASE.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="TestMe.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="NewTest">
+        <java classname="NewTest" failonerror="true" fork="yes">
+            <classpath refid="TestMe.classpath"/>
+        </java>
+    </target>
+</project>

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="." default="build" name="TestANTJunitTestProject">
 
-	<property name="src.dir"     value="src"/>
-	<property name="build.dir"   value="build"/>
+	<property name="src.dir"     value="ANTJunitProject/src"/>
+	<property name="build.dir"   value="ANTJunitProject/build"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir"     value="${build.dir}/jar"/>
+<property name="lib.dir"     value="ANTJunitProject/libs"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+
 
    <target name="build" depends="compile">
       <echo>Hello World - Welcome to Apache Ant!</echo>
@@ -13,7 +19,7 @@
    <target name="compile">
    		<echo>Hello World -Compiling </echo>
    		<mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
    		     
    </target>
    

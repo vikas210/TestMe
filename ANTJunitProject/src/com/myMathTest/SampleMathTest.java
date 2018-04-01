@@ -11,10 +11,7 @@ import org.junit.Test;
 public class SampleMathTest {
 
 	
-
-		
-
-		@Test
+	  @Test
 		void testSum() {
 			assertEquals(10+10, 20);
 		}

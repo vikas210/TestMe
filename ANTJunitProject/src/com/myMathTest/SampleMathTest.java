@@ -12,11 +12,11 @@ public class SampleMathTest {
 
 	
 	  @Test
-		void testSum() {
+		public void testSum() {
 			assertEquals(10+10, 20);
 		}
 		@Test
-		void testProduct() {
+		public void testProduct() {
 			assertEquals(10*10, 20);
 		}
 	}

@@ -33,7 +33,11 @@
    
    <target name = "testRun" >
    <echo>Hello World -Running TestCases for TESTNG </echo> 
-      <testng outputdir = "${build.dir}" classpathref="classpath"> 
+      <testng outputdir = "${build.dir}">
+      		<classpath>
+                <path refid="classpath"/>
+                <pathelement location="${classes.dir}"/>
+            </classpath> 
          <xmlfileset dir = "${config.dir}" includes="TestNGMathTest.xml"/> 
       </testng>
    </target>

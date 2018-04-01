@@ -12,7 +12,7 @@
     </path>
 
 
-   <target name="build" depends="compile">
+   <target name="build" depends="compile,testRun">
       <echo>Hello World - Welcome to Apache Ant!</echo>
    </target>
    
@@ -20,6 +20,23 @@
    		<echo>Hello World -Compiling </echo>
    		<mkdir dir="${classes.dir}"/>
         <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+   		     
+   </target>
+   
+   <target name="testRun">
+   		<echo>Hello World -Running TestCases </echo>   		
+        
+        <junit printsummary="yes">
+            <classpath>
+                <path refid="classpath"/>
+                <pathelement location="${classes.dir}"/>
+            </classpath>
+
+            <batchtest fork="yes">
+                <fileset dir="${src.dir}" includes="**/*Test.java"/>
+            </batchtest>
+        </junit>
+        
    		     
    </target>
    

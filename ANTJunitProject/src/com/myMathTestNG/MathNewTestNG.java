@@ -13,6 +13,6 @@ public class MathNewTestNG {
    
    @Test
    public void testFail() {
- 		Assert.assertEquals(20, 5+5);
+ 		Assert.assertEquals(20, 15+5);
    }
 }

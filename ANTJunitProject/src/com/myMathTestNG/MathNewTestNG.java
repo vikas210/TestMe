@@ -9,7 +9,7 @@ public class MathNewTestNG {
   public void testPass() {
 		Assert.assertEquals(10, 5+5);
   }
-   
+     
    
    @Test
    public void testFail() {
